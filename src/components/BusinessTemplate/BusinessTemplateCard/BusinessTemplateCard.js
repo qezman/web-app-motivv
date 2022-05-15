@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col } from "react-bootstrap";
+import { Row, } from "react-bootstrap";
 import style from "./BusinessTemplateCard.module.css";
 import ContributorIcon from "../../../assets/contributor-icon.svg";
 import { Badge } from "react-bootstrap";
