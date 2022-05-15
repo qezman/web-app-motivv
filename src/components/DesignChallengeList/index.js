@@ -1,111 +1,111 @@
-import Axios from "axios";
-import React, { useState, useEffect } from "react";
+import React, { useContext } from "react";
 import {
-  Alert,
-  Button,
+  // Alert,
+  // Button,
   Container,
-  Form,
-  Spinner,
+  // Form,
+  // Spinner,
   Row,
-  Col,
+  // Col,
 } from "react-bootstrap";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 // import { Row, Container } from "react-bootstrap";
 import Fade from "react-reveal";
-// import { ChallengeContext } from "../ChallengeContext";
+import { ChallengeContext } from "../ChallengeContext";
 import Dashboard from "../Dashboard/Dashboard";
-// import { DesignChallengeCard } from "../DesignChallengeCard";
+import { DesignChallengeCard } from "../DesignChallengeCard";
 
 import Loader from "../../assets/loader.mp4";
-import style from "../SuggestTemplate/SuggestTemplateForm/suggest-template-form.module.css";
-import { URL } from "../../constants";
+// import style from "../SuggestTemplate/SuggestTemplateForm/suggest-template-form.module.css";
+// import { URL } from "../../constants";
 
 import "./styles.css";
 
-const url = `${URL}/uploadChallenge.php`;
-const fUrl = `${URL}/fetchChallenge.php`;
-const urlDelete = `${URL}/deleteChallenge.php`;
+// const url = `${URL}/uploadChallenge.php`;
+// const fUrl = `${URL}/fetchChallenge.php`;
+// const urlDelete = `${URL}/deleteChallenge.php`;
 
 const DesignChallengeList = (props) => {
-  const [fileToBeUploaded, setFileToBeUploaded] = useState(null);
-  const [title, setTitle] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [dLoading, setDLoading] = useState(false);
-  const [message, setMessage] = useState("");
-  // const { challenges, loading } = useContext(ChallengeContext);
-  const [challenges, setChallenge] = useState([]);
-  const [floading, setFLoading] = useState(true);
+  // const [fileToBeUploaded, setFileToBeUploaded] = useState(null);
+  // const [title, setTitle] = useState("");
+  // const [loading, setLoading] = useState(false);
+  // const [dLoading, setDLoading] = useState(false);
+  // const [message, setMessage] = useState("");
+  const { challenges, loading } = useContext(ChallengeContext);
+  // const [challenges, setChallenge] = useState([]);
+  // const [floading, setFLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchData = () => {
-      Axios.get(fUrl)
-        .then((res) => {
-          setFLoading(false);
-          let chs = res.data.challenges;
-          setChallenge(chs ? chs : []);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    };
+  // useEffect(() => {
+  //   const fetchData = () => {
+  //     Axios.get(fUrl)
+  //       .then((res) => {
+  //         setFLoading(false);
+  //         let chs = res.data.challenges;
+  //         setChallenge(chs ? chs : []);
+  //       })
+  //       .catch((err) => {
+  //         console.log(err);
+  //       });
+  //   };
 
-    fetchData();
-  }, []);
+  //   fetchData();
+  // }, []);
 
-  const handleDelete = async (id, title, image) => {
-    setDLoading(true);
-    let a = window.confirm("Are you sure you want to delete");
-    if (a) {
-      await Axios.post(urlDelete, { id, title, image }).then((res) => {
-        setDLoading(false);
-        alert(res.data.msg);
-        setChallenge(challenges.filter((ch) => ch.id !== id));
-        // props.history.push("/design-challenge");
-      });
-    }
-  };
-  // const randomId = (length) => {
-  //   let result = "";
-  //   const characters =
-  //     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-  //   const charactersLength = characters.length;
-  //   for (var i = 0; i < length; i++) {
-  //     result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  // const handleDelete = async (id, title, image) => {
+  //   setDLoading(true);
+  //   let a = window.confirm("Are you sure you want to delete");
+  //   if (a) {
+  //     await Axios.post(urlDelete, { id, title, image }).then((res) => {
+  //       setDLoading(false);
+  //       alert(res.data.msg);
+  //       setChallenge(challenges.filter((ch) => ch.id !== id));
+  //       // props.history.push("/design-challenge");
+  //     });
   //   }
-  //   return result;
   // };
-  const handleChange = (e) => {
-    const fileUploaded = e.target.files[0];
-    setFileToBeUploaded(fileUploaded);
-  };
 
-  const handleUpload = async () => {
-    setMessage("");
-    if (fileToBeUploaded && title) {
-      setLoading(true);
-      const formData = new FormData();
-      formData.append("upload", fileToBeUploaded);
-      formData.append("title", title);
-      await Axios.post(url, formData).then((res) => {
-        if (res.data.success === 1) {
-          setLoading(false);
-          setMessage(res.data.msg);
-          setFileToBeUploaded(null);
-          props.history.push("/design-challenge");
-        } else {
-          setLoading(false);
-          setMessage(res.data.msg);
-        }
-      });
-    } else {
-      setMessage("Both fields are required");
+  const randomId = (length) => {
+    let result = "";
+    const characters =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    const charactersLength = characters.length;
+    for (var i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
     }
+    return result;
   };
+  // const handleChange = (e) => {
+  //   const fileUploaded = e.target.files[0];
+  //   setFileToBeUploaded(fileUploaded);
+  // };
+
+  // const handleUpload = async () => {
+  //   setMessage("");
+  //   if (fileToBeUploaded && title) {
+  //     setLoading(true);
+  //     const formData = new FormData();
+  //     formData.append("upload", fileToBeUploaded);
+  //     formData.append("title", title);
+  //     await Axios.post(url, formData).then((res) => {
+  //       if (res.data.success === 1) {
+  //         setLoading(false);
+  //         setMessage(res.data.msg);
+  //         setFileToBeUploaded(null);
+  //         props.history.push("/design-challenge");
+  //       } else {
+  //         setLoading(false);
+  //         setMessage(res.data.msg);
+  //       }
+  //     });
+  //   } else {
+  //     setMessage("Both fields are required");
+  //   }
+  // };
 
   return (
     <Dashboard {...props}>
       <Fade className="">
-        {/* <Container className="mot-design-challenge-section position-relative">
+        <Container className="mot-design-challenge-section position-relative">
           <h2 className="challenge-title mb-0">Design Challenge</h2>
           {loading ? (
             <p></p>
@@ -153,16 +153,16 @@ const DesignChallengeList = (props) => {
               </p>
             )}
           </Row>
-          *id should be some random id processor package
+          {/* *id should be some random id processor package */}
           <Link
             to={`/design-challenge/type=new&id=${randomId(8)}`}
             className="position-absolute mot-create-challenge-btn btn btn-primary btn-lg"
           >
             Create Challenge
           </Link>
-        </Container> */}
+        </Container>
 
-        <Container>
+        {/* <Container>
           <h2 className="challenge-title mb-0">Upload Design Challenge</h2>
           <div className="mt-5 w-50">
             <div className="mb-3">
@@ -266,7 +266,7 @@ const DesignChallengeList = (props) => {
               </p>
             )}
           </div>
-        </Container>
+        </Container> */}
       </Fade>
     </Dashboard>
   );
