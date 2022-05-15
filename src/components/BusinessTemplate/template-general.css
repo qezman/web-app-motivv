@@ -75,6 +75,8 @@
   border: 1px solid rgba(223, 216, 208, 0.63);
   border-radius: 32px;
   align-items: center;
+  padding: 4px 8px;
+  column-gap: 8px;
 }
 .mot-template-label__image {
   width: 16px;
@@ -166,9 +168,7 @@
   .mot-business-template-container {
     max-width: 95vw;
   }
-  .template-card-more {
-    width: 33%;
-  }
+
   .mot-template-list-refresh {
   }
   .mot-templates-grid {
