@@ -1,13 +1,8 @@
 .curriculum__section {
   background: url("../assets/Rectangle\ 417.png");
   background-position: center;
-  /* color: white; */
   background-size: cover;
   padding: 70px 50px;
-  /* display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    overflow-x: hidden; */
 }
 .curriculum__button button {
   font-weight: 500;
@@ -24,6 +19,24 @@
   );
   border-radius: 56px;
   margin: auto;
+}
+.get__started__button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.get__started__button button {
+  width: 216px;
+  height: 50px;
+  color: #ffffff;
+  background: #134a7c;
+  box-shadow: 0px 4px 20px rgba(50, 104, 153, 0.3);
+  border-radius: 56px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 21px;
+  text-align: center;
+  text-transform: capitalize;
 }
 .curriculum__button button,
 .curriculum__button__image {
