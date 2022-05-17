@@ -23,15 +23,14 @@ const Header = () => {
     <Fade bottom>
       <Row>
         <Col className="styled-header">
-          {" "}
           <h6 className="text-white">DESIGN SCHOOL</h6>
           <h1>
-            Fast track your{" "}
+            Fast track your
             <span style={{ color: "#F89707" }}> Self-taught Design </span>{" "}
             Career With Our Complete 4-year University-feel Curriculum!
           </h1>
           <Button className="style-button">
-            Scroll to learn more <img src={DownIcon} alt="" />{" "}
+            Scroll to learn more <img src={DownIcon} alt="" />
           </Button>
         </Col>
       </Row>

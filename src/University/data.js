@@ -1,6 +1,10 @@
 import { ReactComponent as DiamondIcon } from "./assets/layers (2) 1.svg";
 import { ReactComponent as BookIcon } from "./assets/book (3) 1.svg";
 import { ReactComponent as UpIcon } from "./assets/arrows-up 1.svg";
+import testimonialImage from "./assets/image 9.jpg";
+import testimonialImage1 from "./assets/image 13.jpg";
+import testimonialImage2 from "./assets/image 15.jpg";
+import testimonialImage3 from "./assets/image 18.jpg";
 
 export let data = [
   {
@@ -23,5 +27,28 @@ export let data = [
     bgColor: "#FFF",
     subTitle:
       "You can easily track your progress with the curriculum. And just in case you meet any obstacles, our Customer support is available 24/7.",
+  },
+];
+
+export const testimonialData = [
+  {
+    author: "Austin Williams",
+    image: `${testimonialImage}`,
+    text: "Motivv Design School is a whole design career in one package. You’d not understand till you get to see what i’m talking about when you get the design curriculum",
+  },
+  {
+    author: "Austin Williams",
+    image: `${testimonialImage1}`,
+    text: "Motivv Design School is a whole design career in one package. You’d not understand till you get to see what i’m talking about when you get the design curriculum",
+  },
+  {
+    author: "Austin Williams",
+    image: `${testimonialImage2}`,
+    text: "Motivv Design School is a whole design career in one package. You’d not understand till you get to see what i’m talking about when you get the design curriculum",
+  },
+  {
+    author: "Austin Williams",
+    image: `${testimonialImage3}`,
+    text: "Motivv Design School is a whole design career in one package. You’d not understand till you get to see what i’m talking about when you get the design curriculum",
   },
 ];
