@@ -31,6 +31,7 @@ import DesignChallenge from "./pages/DesignChallenge.js";
 import DesignSchoolComingSoon from "./pages/DesignSchool.js";
 import BusinessTemplate from "./pages/BusinessTemplate";
 import SuggestTemplate from "./pages/SuggestTemplate";
+import University from "./University/index";
 // import NewDesignChallenge from "./pages/NewDesignChallenge";
 
 function App() {
@@ -55,6 +56,7 @@ function App() {
           <Route exact path="/challenges" component={DesignChallenge} />
           <Route exact path="/school" component={DesignSchoolComingSoon} />
           <Route exact path="/business-template" component={BusinessTemplate} />
+          <Route exact path="/university" component={University} />
           <Route
             exact
             path="/business-template/suggest"
@@ -81,7 +83,13 @@ function App() {
             component={Login}
             path="/admin"
           />
-          <AdminRoute
+          {/* <AdminRoute
+            user={user.admin || Cookies.get("admin-auth")}
+            exact
+            component={Dashboard}
+            path="/dashboard"
+          /> */}
+          <PublicRoute
             user={user.admin || Cookies.get("admin-auth")}
             exact
             component={Dashboard}

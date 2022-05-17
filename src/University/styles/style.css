@@ -1,0 +1,140 @@
+.styled-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #134a7c;
+    text-align: center;
+    padding: 100px 300px;
+}
+
+.styled-header>h1 {
+    color: white;
+    font-weight: bold;
+}
+
+.styled-header>.style-button {
+    background: linear-gradient( 311.23deg, #256cad -9.07%, rgba(37, 108, 173, 0) 105.76%);
+    border: 1px solid #0f4374;
+    border-radius: 56px;
+    margin-top: 20px;
+    color: white;
+    padding: 23px 65px;
+}
+
+button {
+    outline: none;
+    border: none;
+    padding: 5px 20px;
+}
+
+button:active {
+    outline: 0px;
+    border: none;
+    padding: 5px 20px;
+}
+
+.ds-flex {
+    display: flex;
+}
+
+.bg-black {
+    background-color: black;
+    color: white;
+    padding-top: 100px;
+    margin-bottom: 10px;
+}
+
+.bg-brand {
+    height: 100%;
+}
+
+.styleDiv {
+    display: flex;
+    justify-content: space-around;
+    background-color: white;
+    height: 100vh;
+    flex-direction: column;
+}
+
+.styleContainer {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.bg-branding {
+    width: 50%;
+    height: 50vh;
+    background: url("../assets/Branding.jpg");
+    background-position: center;
+    color: white;
+    background-size: cover;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.bg-branding,
+.bg-art,
+.bg-graphic,
+.bg-UI:hover {
+    transform: scale(1.01);
+    transition: transform 0.5s ease-in-out;
+}
+
+.bg-UI {
+    width: 50%;
+    height: 50vh;
+    background: url("../assets/UI.jpg");
+    background-position: center;
+    color: white;
+    background-size: cover;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    overflow-x: hidden;
+}
+
+.bg-graphic {
+    width: 50%;
+    height: 50vh;
+    background: url("../assets/Illustration.png");
+    background-position: center;
+    color: white;
+    background-size: cover;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    overflow-x: hidden;
+}
+
+.bg-art {
+    width: 50%;
+    height: 50vh;
+    background: url("../assets/Art.png");
+    background-position: center;
+    color: white;
+    background-size: cover;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    overflow-x: hidden;
+}
+
+@media (max-width: 760px) {
+    .styleContainer {
+        flex-direction: column;
+        width: 100%;
+    }
+    .bg-branding,
+    .bg-graphic,
+    .bg-UI,
+    .bg-art {
+        width: 100%;
+    }
+    .sm-mb-50vh {
+        margin-bottom: 50vh;
+    }
+}
