@@ -11,11 +11,11 @@ import StudyPlans from "./components/StudyPlans";
 export default function index() {
   return (
     <>
-      {/* <Header />
-      <KickStart /> */}
+      <Header />
+      <KickStart />
       <Curriculum />
       <Testimonial />
-      {/* <SkillsCards /> */}
+      <SkillsCards />
       <StudyPlans/>
      
       <Footer />

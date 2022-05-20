@@ -87,3 +87,20 @@
   line-height: 24px;
   color: #131313;
 }
+
+
+@media (max-width: 768px) {
+  .study__plans__section__card__container {
+    display: grid;
+
+  grid-gap: 2rem;
+  gap: 2rem;
+  margin: 80px auto 40px;
+    grid-template-columns: repeat(1, 1fr);
+
+  /* overflow-x: auto;
+  flex-wrap: nowrap;
+  width: 508px;
+  margin: auto; */
+}
+}
