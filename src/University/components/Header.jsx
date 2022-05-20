@@ -2,13 +2,13 @@ import React from "react";
 import Fade from "react-reveal";
 import "../styles/style.css";
 import Slider from "react-slick";
-import { Card, Col, Row, Button } from "react-bootstrap";
+import {  Button } from "react-bootstrap";
 import DownIcon from "../assets/arrow_downward.svg";
 import NavBar from "./NavBar";
 import Img1 from "../assets/Rectangle 406-1.jpg";
 import Img2 from "../assets/Rectangle 406-2.jpg";
 import Img3 from "../assets/Rectangle 406.jpg";
-import Img4 from "../assets/Rectangle 407-2.jpg";
+// import Img4 from "../assets/Rectangle 407-2.jpg";
 import Img5 from "../assets/Rectangle 407-1.jpg";
 
 const settings = {

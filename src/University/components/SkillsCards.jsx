@@ -1,7 +1,7 @@
 import React from "react";
-import { Row, Col } from "react-bootstrap";
-import SkillsCard from "./SkillsCard";
-import Img1 from "../assets/Illustration.png";
+// import { Row, Col } from "react-bootstrap";
+// import SkillsCard from "./SkillsCard";
+// import Img1 from "../assets/Illustration.png";
 import "../styles/style.css";
 
 export default function SkillsCards() {

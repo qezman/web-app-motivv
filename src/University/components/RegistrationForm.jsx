@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import "../styles/registrationForm.css";
 import { designNicheList } from "../data";
-import arrow from "../assets/keyboard_arrow_down.png";
+// import arrow from "../assets/keyboard_arrow_down.png";
 
 const RegistrationForm = () => {
   const [formData, setFormData] = useState({
-    designNiche:"",
+    designNiche: "",
     userName: "",
     email: "",
     schoolType: "",
@@ -27,8 +27,8 @@ const RegistrationForm = () => {
   };
 
   const handleValueChange = e => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    let designNiche = e.target.value;
+    setFormData({ ...formData, designNiche });
   };
 
   const handleProceed = () => {
@@ -101,12 +101,12 @@ const RegistrationForm = () => {
               <select
                 name="receipt"
                 className="account_"
-                value={formData.designNiche}
+                // value={formData.designNiche}
                 onChange={handleValueChange}
                 // list={cardReceiptList}
                 required
               >
-                <option hidden value="">
+                <option hidden value="" selected>
                   Select Option
                 </option>
                 {designNicheList.map(item => {
@@ -118,13 +118,12 @@ const RegistrationForm = () => {
                   );
                 })}
               </select>
+
               {/* <img src={arrow} alt="" /> */}
             </div>
           </div>
           <button onClick={() => handleProceed()}> Proceed</button>
         </div>
-
-
       </div>
     </div>
   );
