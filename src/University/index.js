@@ -6,7 +6,6 @@ import Footer from "../components/Footer/index";
 import Testimonial from "./components/Testimonial";
 import Curriculum from "./components/Curriculum";
 import NavBar from "./components/NavBar";
-import Accordion from "./components/Accordion";
 import Accordions from "./components/Accordions";
 
 export default function index() {
