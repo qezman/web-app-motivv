@@ -137,7 +137,7 @@ export default function index() {
           </Row>
           <div>
             <div className="justify-content-center text-center white-text copy-text">
-              Copyright © 2020 The Motivv Community
+              Copyright © {new Date().getFullYear()} The Motivv Community
               <br />
               All Rights Reserved
             </div>
