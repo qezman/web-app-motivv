@@ -38,7 +38,7 @@ const data = [
 export default function Accordions() {
   return (
     <div className="d-flex flex-column align-items-center justify-content-center p-accs pb-5">
-      <h3 className="h-active font-weight-bold">FAQS</h3>
+      <h3 className="h-active font-weight-bold ">FAQS</h3>
       <p className="text-align-center text-center mb-5">
         We have curated some questions you may have and we <br />
         have given satisfactory answers. We believe you <br />

@@ -15,9 +15,9 @@ export default function index() {
       <Header />
       <KickStart />
       <Curriculum />
-      <Accordions />
       <Testimonial />
       <SkillsCards />
+      <Accordions />
       <Footer />
     </>
   );
