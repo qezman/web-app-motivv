@@ -3,8 +3,8 @@ import "../styles/studyPlansCard.css";
 import RegistrationForm from "./RegistrationForm";
 
 const StudyPlansCard = () => {
-  const [value, setValue] = useState("option1");
-  const [showResults, setShowResults] = useState(true);
+  const [value, setValue] = useState("");
+  const [showResults, setShowResults] = useState(false);
 
   const handleChange = changeEvent => {
     setValue(changeEvent.target.value);
