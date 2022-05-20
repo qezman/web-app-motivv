@@ -71,7 +71,6 @@ button:active {
     display: flex;
     justify-content: space-around;
     background-color: white;
-    height: 100vh;
     flex-direction: column;
 }
 
@@ -132,12 +131,11 @@ button:active {
     justify-content: center;
     overflow-x: hidden;
 }
-/* #root > div:nth-child(3) > div > div > div > div:nth-child(n){
-    height:286px;
-    width: 255px!important;
+
+/* #root>div:nth-child(3)>div>div>div>div:nth-child(n) {
+    height: 286px;
+    width: 255px !important;
 } */
-
-
 
 @media (max-width: 760px) {
     .styleContainer {

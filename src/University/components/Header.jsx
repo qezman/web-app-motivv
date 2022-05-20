@@ -11,18 +11,11 @@ import Img3 from "../assets/Rectangle 406.jpg";
 import Img4 from "../assets/Rectangle 407-2.jpg";
 import Img5 from "../assets/Rectangle 407-1.jpg";
 
-// const settings = {
-//   dots: false,
-//   infinite: false,
-//   speed: 500,
-//   slidesToShow: 3,
-//   slidesToScroll: 1,
-// };
 const settings = {
   dots: false,
   infinite: true,
-  speed: 500,
-  slidesToShow: 4,
+  speed: 200,
+  slidesToShow: 3,
   slidesToScroll: 1,
   autoplay: true,
   autoplaySpeed: 2000,
@@ -61,7 +54,6 @@ const settings = {
   ],
 };
 
-
 const Header = () => {
   return (
     <Fade bottom>
@@ -81,24 +73,31 @@ const Header = () => {
       </div>
 
       {/* <div style={{ display:"inline-block"}}> */}
-        <Slider {...settings}>
-          <div className="" >
-            <div className=""><img style={{ height: "100%", width: "100%" }} src={Img1} alt=""/></div>
-          </div>
-
+      <Slider {...settings}>
+        <div className="">
           <div className="">
-          <div className=""><img style={{ height: "100%", width: "100%" }} src={Img2} alt=""/></div>
+            <img style={{ height: "100%", width: "100%" }} src={Img1} alt="" />
           </div>
+        </div>
 
-          <div className="" >
-          <div className=""><img style={{ height: "100%", width: "100%" }} src={Img3} alt=""/></div>
+        <div className="">
+          <div className="">
+            <img style={{ height: "100%", width: "100%" }} src={Img2} alt="" />
           </div>
+        </div>
 
-          <div className="" >
-          <div className=""><img style={{ height: "100%", width: "100%" }} src={Img5} alt=""/></div>
+        <div className="">
+          <div className="">
+            <img style={{ height: "100%", width: "100%" }} src={Img3} alt="" />
           </div>
-        
-        </Slider>
+        </div>
+
+        <div className="">
+          <div className="">
+            <img style={{ height: "100%", width: "100%" }} src={Img5} alt="" />
+          </div>
+        </div>
+      </Slider>
       {/* </div> */}
     </Fade>
   );
