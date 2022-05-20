@@ -1,12 +1,12 @@
 .registration__form__container,
-.registration__form__section  {
+.registration__form__section {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
 .registration__form__container {
-    margin: 100px 0 60px;
+  margin: 100px 0 60px;
 }
 
 .registration__form__section__sub {
@@ -41,5 +41,43 @@
   background: #134a7c;
   border: 1px solid #95a6b6;
   border-radius: 56px;
-  margin-top:20px;
+  margin-top: 20px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 21px;
+  text-align: center;
+  text-transform: capitalize;
+  color: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .registration__form__section__sub {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0px;
+  }
+  .account {
+    width: 353px;
+    height: 56px;
+  }
+  .account_ {
+    width: 353px;
+    height: 56px;
+  }
+  .registration__form__container,
+  .registration__form__section {
+    width: 353px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .registration__form__section button {
+    margin: auto;
+  }
+  .registration__form__container h3{
+      text-align: center;
+  }
 }
