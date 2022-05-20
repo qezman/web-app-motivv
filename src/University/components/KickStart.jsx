@@ -18,20 +18,11 @@ export default function () {
           easier.
         </p>
 
-        <Row>
+        <div className="ds-inline-res">
           {data.map((item) => (
-            <Col
-              key={item.title}
-              md={4}
-              style={{
-                paddingLeft: 0,
-                paddingRight: 0,
-              }}
-            >
-              <KickStartCards {...item} />
-            </Col>
+            <KickStartCards {...item} />
           ))}
-        </Row>
+        </div>
       </div>
     </div>
   );

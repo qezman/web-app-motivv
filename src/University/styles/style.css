@@ -137,6 +137,10 @@ button:active {
     width: 255px !important;
 }
 
+.ds-inline-res {
+    display: flex;
+}
+
 @media (max-width: 760px) {
     .styleContainer {
         flex-direction: column;
@@ -157,5 +161,12 @@ button:active {
     }
     .sm-none {
         display: none;
+    }
+    .ds-inline-res {
+        flex-direction: column;
+    }
+    #root>div:nth-child(3)>div>div>div>div:nth-child(n) {
+        height: 186px;
+        width: 155px !important;
     }
 }
