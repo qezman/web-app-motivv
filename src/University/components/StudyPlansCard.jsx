@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import "../styles/studyPlansCard.css";
 import RegistrationForm from "./RegistrationForm";
+import tooltip1 from "../assets/Vector (1).png";
+import tooltip2 from "../assets/Vector(2).png";
+import polygon1 from "../assets/Polygon 18.png";
+import polygon2 from "../assets/Polygon 18 (1).png";
 
 const StudyPlansCard = () => {
   const [value, setValue] = useState("");
@@ -23,7 +27,9 @@ const StudyPlansCard = () => {
           }}
         >
           <div className="study__plans__section__card__input__free">
-            <span className="study__plans__section__card__input__free__tag">Free</span>
+            <span className="study__plans__section__card__input__free__tag">
+              Free
+            </span>
             <div className="study__plans__section__card__input">
               <input
                 type="radio"
@@ -45,13 +51,48 @@ const StudyPlansCard = () => {
           <div className=" study__plans__section__card__sub__section">
             <div className=" study__plans__section__card__first__sub">
               <h4>Features:</h4>
-              <p>Access to course curriculum</p>
-              <p>Access to course topics</p>
-              <p>Access to reference links</p>
+
+              <div className="prin">
+                <div className="princy">
+                  <img src={polygon1} alt="" />
+                </div>
+                <p>Access to course curriculum</p>
+              </div>
+
+              <div className="prin">
+                <div className="princy">
+                  <img src={polygon1} alt="" />
+                </div>
+                <p>Access to course topics</p>
+              </div>
+
+              <div className="prin">
+                <div className="princy">
+                  <img src={polygon1} alt="" />
+                </div>
+                <p>Access to reference links</p>
+              </div>
             </div>
 
             <div className=" study__plans__section__card__second__sub">
+              <div className="princy">
+                <img src={polygon1} alt="" />
+              </div>
               <p>Get certificate of completion and project advisor</p>
+              <div className="transaction__tooltip">
+                {/* <p>Learn why your trade could fail</p> */}
+                <button
+                  type="button"
+                  className=""
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  title="Learn why your trade could fail"
+                >
+                  <div className="transaction__tooltip__image">
+                    <img src={tooltip1} alt="" />
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -64,7 +105,9 @@ const StudyPlansCard = () => {
           }}
         >
           <div className="study__plans__section__card__input__premium">
-            <span className="study__plans__section__card__input__premium__tag">Premium</span>
+            <span className="study__plans__section__card__input__premium__tag">
+              Premium
+            </span>
             <div className="study__plans__section__card__input">
               <input
                 type="radio"
@@ -85,16 +128,48 @@ const StudyPlansCard = () => {
           <div className=" study__plans__section__card__sub__section">
             <div className=" study__plans__section__card__first__sub">
               <h4>Features:</h4>
-              <p>
-                Access to course curriculum, courses links + resource links
-                (blogs and course) + videos
-              </p>
-              <p>Access to course topics</p>
-              <p>Access to reference links</p>
+              <div className="prin">
+                <div className="princy">
+                  <img src={polygon2} alt="" />
+                </div>
+                <p>
+                  Access to course curriculum, courses links + resource links
+                  (blogs and course) + videos
+                </p>
+              </div>
+              <div className="prin">
+                <div className="princy">
+                  <img src={polygon2} alt="" />
+                </div>
+                <p>Access to course topics</p>
+              </div>
+              <div className="prin">
+                <div className="princy">
+                  <img src={polygon2} alt="" />
+                </div>
+                <p>Access to reference links</p>
+              </div>
             </div>
 
             <div className=" study__plans__section__card__second__sub">
+              <div className="princy">
+                <img src={polygon2} alt="" />
+              </div>
               <p>Get certificate of completion and project advisor</p>
+              <div className="transaction__tooltip">
+                {/* <p>Learn why your trade could fail</p> */}
+                <button
+                  type="button"
+                  className=""
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  title="Learn why your trade could fail"
+                >
+                  <div className="transaction__tooltip__image">
+                    <img src={tooltip2} alt="" />
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
         </div>

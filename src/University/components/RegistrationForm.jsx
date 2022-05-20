@@ -37,7 +37,7 @@ const RegistrationForm = () => {
   return (
     <div className="registration__form">
       <div className="registration__form__container">
-        <h3>Please input your informaton to proceed to checkout</h3>
+        <h3>Please input your information to proceed to checkout</h3>
 
         <div className="registration__form__section">
           <div className="registration__form__section__sub">
@@ -106,7 +106,7 @@ const RegistrationForm = () => {
                 // list={cardReceiptList}
                 required
               >
-                <option hidden value="" selected>
+                <option hidden value="text">
                   Select Option
                 </option>
                 {designNicheList.map(item => {

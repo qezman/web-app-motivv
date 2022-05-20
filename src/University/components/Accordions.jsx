@@ -45,8 +45,8 @@ export default function Accordions() {
         have given satisfactory answers. We believe you <br />
         will have no more questions after going through them.
       </p>
-      {data.map((info) => (
-        <Accordion {...info} />
+      {data.map((info, index) => (
+        <Accordion {...info} key={index} />
       ))}
 
       <span className="email-tag">
