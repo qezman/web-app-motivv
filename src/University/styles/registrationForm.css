@@ -1,0 +1,45 @@
+.registration__form__container,
+.registration__form__section  {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.registration__form__container {
+    margin: 100px 0 60px;
+}
+
+.registration__form__section__sub {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.account {
+  width: 273px;
+  height: 56px;
+  padding: 20px;
+  border: 1px solid #95a6b6;
+  border-radius: 8px;
+}
+.account_ {
+  width: 567px;
+  height: 56px;
+  padding: 20px;
+  border: 1px solid #95a6b6;
+  border-radius: 8px;
+}
+.form-groupp {
+  margin: 10px 0px;
+}
+.registration__form__section select {
+  padding: 0px 20px;
+}
+.registration__form__section button {
+  width: 216px;
+  height: 50px;
+  background: #134a7c;
+  border: 1px solid #95a6b6;
+  border-radius: 56px;
+  margin-top:20px;
+}

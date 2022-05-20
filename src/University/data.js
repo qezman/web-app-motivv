@@ -52,3 +52,17 @@ export const testimonialData = [
     text: "Motivv Design School is a whole design career in one package. You’d not understand till you get to see what i’m talking about when you get the design curriculum",
   },
 ];
+
+
+export const designNicheList = [
+  {
+    id: 1,
+    value: "0",
+    text:"Princess",
+  },
+  {
+    id: 2,
+    value: "1",
+    text: "Is here"
+  } 
+];

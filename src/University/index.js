@@ -6,15 +6,18 @@ import Footer from "../components/Footer/index";
 import Testimonial from "./components/Testimonial";
 import Curriculum from "./components/Curriculum";
 import NavBar from "./components/NavBar";
+import StudyPlans from "./components/StudyPlans";
 
 export default function index() {
   return (
     <>
-      <Header />
-      <KickStart />
+      {/* <Header />
+      <KickStart /> */}
       <Curriculum />
       <Testimonial />
-      <SkillsCards />
+      {/* <SkillsCards /> */}
+      <StudyPlans/>
+     
       <Footer />
     </>
   );

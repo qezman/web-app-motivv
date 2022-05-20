@@ -12,16 +12,16 @@ const TestimonialCard = () => {
 
           return (
             <div className="testimonial__card__container" key={index}>
-              <div class="card testimonial__card" >
+              <div className="card testimonial__card" >
                 <img
-                  class="card-img-top"
+                  className="card-img-top"
                   src={image}
                   alt="testimonial author"
                 />
-                <div class="card-body testimonial__card__cardbody">
+                <div className="card-body testimonial__card__cardbody">
                     <p className="princess">“</p>
-                  <p class="card-text">{text}</p>
-                  <h5 class="card-title">{author}</h5>
+                  <p className="card-text">{text}</p>
+                  <h5 className="card-title">{author}</h5>
                 </div>
               </div>
             </div>
