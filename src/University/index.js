@@ -14,7 +14,7 @@ export default function index() {
       <KickStart />
       <Curriculum />
       <Testimonial />
-      {/* <SkillsCards /> */}
+      <SkillsCards />
       <Footer />
     </>
   );
