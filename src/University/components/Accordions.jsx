@@ -1,5 +1,6 @@
 import React from "react";
 import Accordion from "./Accordion";
+import { ReactComponent as Dot } from "../assets/dot.svg";
 import "../styles/Accordion.css";
 
 const data = [
@@ -47,6 +48,13 @@ export default function Accordions() {
       {data.map((info) => (
         <Accordion {...info} />
       ))}
+
+      <span className="email-tag">
+        <Dot />
+        <span className="ml-2">
+          Yo! Can’t find what you’re looking for? Send us a mail
+        </span>
+      </span>
     </div>
   );
 }

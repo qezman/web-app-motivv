@@ -60,7 +60,6 @@ button:active {
     background-color: black;
     color: white;
     padding-top: 100px;
-    margin-bottom: 10px;
 }
 
 .bg-brand {
@@ -132,10 +131,10 @@ button:active {
     overflow-x: hidden;
 }
 
-/* #root>div:nth-child(3)>div>div>div>div:nth-child(n) {
+#root>div:nth-child(3)>div>div>div>div:nth-child(n) {
     height: 286px;
     width: 255px !important;
-} */
+}
 
 .ds-inline-res {
     display: flex;
