@@ -18,7 +18,7 @@ const Curriculum = () => {
       </div>
       <div className="curriculum__section__body">
         <div className="curriculum__section__body__title">
-          <h2>What’s Inside 👇</h2>
+          <h2>What's Inside &#128071;</h2>
           <p>
             Welcome To Motivv Design School. Here’s what You Will Learn in your
             4-year study:
@@ -46,7 +46,9 @@ const Curriculum = () => {
               <img src={image2} alt="" />
             </div>
             <p className="curriculum__year">Year 2</p>
-            <p className="curriculum__course__title">Introduction to Graphic Design</p>
+            <p className="curriculum__course__title">
+              Introduction to Graphic Design
+            </p>
             <div className="curriculum__section__body__content__item__ul">
               <ul>
                 <li>IGD 101: Graphic Design Basics</li>
@@ -72,6 +74,17 @@ const Curriculum = () => {
               </ul>
             </div>
           </div>
+        </div>
+        <div className="get__started__button">
+          <button>
+            Get Started
+            <span role="img" aria-label="rocket icon">
+              &#128640;
+            </span>
+            {/* <div className="curriculum__button__image">
+            <img src={button} alt="" />
+          </div> */}
+          </button>
         </div>
       </div>
     </div>

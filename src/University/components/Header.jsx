@@ -11,13 +11,57 @@ import Img3 from "../assets/Rectangle 406.jpg";
 import Img4 from "../assets/Rectangle 407-2.jpg";
 import Img5 from "../assets/Rectangle 407-1.jpg";
 
+// const settings = {
+//   dots: false,
+//   infinite: false,
+//   speed: 500,
+//   slidesToShow: 3,
+//   slidesToScroll: 1,
+// };
 const settings = {
   dots: false,
-  infinite: false,
+  infinite: true,
   speed: 500,
-  slidesToShow: 3,
+  slidesToShow: 4,
   slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 2000,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: false,
+      },
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        initialSlide: 2,
+      },
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+      },
+    },
+    {
+      breakpoint: 320,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      },
+    },
+  ],
 };
+
+
 const Header = () => {
   return (
     <Fade bottom>
@@ -36,25 +80,26 @@ const Header = () => {
         </div>
       </div>
 
-      <div style={{ height: "50px", width: "100%", display: "inline-block" }}>
+      {/* <div style={{ display:"inline-block"}}> */}
         <Slider {...settings}>
-          <div className="mx-2" style={{ height: "40px", width: "40px" }}>
-            <img style={{ height: "100%", width: "100%" }} src={Img1} />
+          <div className="" >
+            <div className=""><img style={{ height: "100%", width: "100%" }} src={Img1} alt=""/></div>
           </div>
 
-          <div className="mx-2" style={{ height: "40px", width: "40px" }}>
-            <img style={{ height: "100%", width: "100%" }} src={Img2} />
+          <div className="">
+          <div className=""><img style={{ height: "100%", width: "100%" }} src={Img2} alt=""/></div>
           </div>
 
-          <div className="mx-2" style={{ height: "40px", width: "40px" }}>
-            <img style={{ height: "100%", width: "100%" }} src={Img2} />
+          <div className="" >
+          <div className=""><img style={{ height: "100%", width: "100%" }} src={Img3} alt=""/></div>
           </div>
 
-          <div className="mx-2" style={{ height: "40px", width: "40px" }}>
-            <img style={{ height: "100%", width: "100%" }} src={Img1} />
+          <div className="" >
+          <div className=""><img style={{ height: "100%", width: "100%" }} src={Img5} alt=""/></div>
           </div>
+        
         </Slider>
-      </div>
+      {/* </div> */}
     </Fade>
   );
 };
