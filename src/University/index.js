@@ -5,18 +5,17 @@ import SkillsCards from "./components/SkillsCards";
 import Footer from "../components/Footer/index";
 import Testimonial from "./components/Testimonial";
 import Curriculum from "./components/Curriculum";
-
+import NavBar from "./components/NavBar";
 
 export default function index() {
   return (
     <>
       <Header />
       <KickStart />
-      <Curriculum/>
-      <Testimonial/>
+      <Curriculum />
+      <Testimonial />
       <SkillsCards />
-     
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 }

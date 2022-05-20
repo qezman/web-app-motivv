@@ -4,25 +4,26 @@ import "../styles/style.css";
 import Slider from "react-slick";
 import { Card, Col, Row, Button } from "react-bootstrap";
 import DownIcon from "../assets/arrow_downward.svg";
+import NavBar from "./NavBar";
 import Img1 from "../assets/Rectangle 406-1.jpg";
 import Img2 from "../assets/Rectangle 406-2.jpg";
 import Img3 from "../assets/Rectangle 406.jpg";
 import Img4 from "../assets/Rectangle 407-2.jpg";
 import Img5 from "../assets/Rectangle 407-1.jpg";
 
+const settings = {
+  dots: false,
+  infinite: false,
+  speed: 500,
+  slidesToShow: 3,
+  slidesToScroll: 1,
+};
 const Header = () => {
-  const settings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-  };
-
   return (
     <Fade bottom>
-      <Row>
-        <Col className="styled-header">
+      <NavBar />
+      <div className="styled-header">
+        <div className="font-weight-bold">
           <h6 className="text-white">DESIGN SCHOOL</h6>
           <h1>
             Fast track your
@@ -32,8 +33,28 @@ const Header = () => {
           <Button className="style-button">
             Scroll to learn more <img src={DownIcon} alt="" />
           </Button>
-        </Col>
-      </Row>
+        </div>
+      </div>
+
+      <div style={{ height: "50px", width: "100%", display: "inline-block" }}>
+        <Slider {...settings}>
+          <div className="mx-2" style={{ height: "40px", width: "40px" }}>
+            <img style={{ height: "100%", width: "100%" }} src={Img1} />
+          </div>
+
+          <div className="mx-2" style={{ height: "40px", width: "40px" }}>
+            <img style={{ height: "100%", width: "100%" }} src={Img2} />
+          </div>
+
+          <div className="mx-2" style={{ height: "40px", width: "40px" }}>
+            <img style={{ height: "100%", width: "100%" }} src={Img2} />
+          </div>
+
+          <div className="mx-2" style={{ height: "40px", width: "40px" }}>
+            <img style={{ height: "100%", width: "100%" }} src={Img1} />
+          </div>
+        </Slider>
+      </div>
     </Fade>
   );
 };
