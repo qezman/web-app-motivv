@@ -17,10 +17,7 @@ export default function KickStartCards({
       }}
     >
       <Icon />
-      <h4
-        className="font-weight-bold mt-5"
-        dangerouslySetInnerHTML={{ __html: title }}
-      ></h4>
+      <h4 className="font-weight-bold mt-5">{title}</h4>
 
       <p className="pr-3">{subTitle}</p>
     </div>

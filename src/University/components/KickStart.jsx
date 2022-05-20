@@ -19,8 +19,8 @@ export default function () {
         </p>
 
         <div className="ds-inline-res">
-          {data.map((item) => (
-            <KickStartCards {...item} />
+          {data.map((item, index) => (
+            <KickStartCards {...item} key={index} />
           ))}
         </div>
       </div>
