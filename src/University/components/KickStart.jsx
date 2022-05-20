@@ -2,9 +2,10 @@ import React from "react";
 import KickStartCards from "./KickStartCards";
 import { Row, Col } from "react-bootstrap";
 import { data } from "../data";
+
 export default function () {
   return (
-    <div className="ds-flex bg-black sm-mb-50vh">
+    <div className="ds-flex bg-black ">
       <div style={{ width: "7%", flex: 1 }}></div>
       <div style={{ width: "93%" }}>
         <h3 className="font-weight-bold">

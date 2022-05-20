@@ -5,15 +5,33 @@
     flex-direction: column;
     background-color: #134a7c;
     text-align: center;
-    padding: 100px 300px;
 }
 
-.styled-header>h1 {
+.btn-nav {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 10px 23.5px;
+    color: #131313;
+    font-weight: 500;
+}
+
+.white {
+    color: white;
+}
+
+.styled-header>div {
+    width: 50%;
+    padding: 100px 0px;
     color: white;
     font-weight: bold;
 }
 
-.styled-header>.style-button {
+.styled-header>div>h1 {
+    color: white;
+    font-weight: bold;
+}
+
+.style-button {
     background: linear-gradient( 311.23deg, #256cad -9.07%, rgba(37, 108, 173, 0) 105.76%);
     border: 1px solid #0f4374;
     border-radius: 56px;
@@ -76,14 +94,6 @@ button:active {
     overflow: hidden;
 }
 
-.bg-branding,
-.bg-art,
-.bg-graphic,
-.bg-UI:hover {
-    transform: scale(1.01);
-    transition: transform 0.5s ease-in-out;
-}
-
 .bg-UI {
     width: 50%;
     height: 50vh;
@@ -136,5 +146,12 @@ button:active {
     }
     .sm-mb-50vh {
         margin-bottom: 50vh;
+    }
+    .styled-header>div {
+        width: 100%;
+        padding: 100px 0px;
+    }
+    .sm-none {
+        display: none;
     }
 }
