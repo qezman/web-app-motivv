@@ -83,13 +83,7 @@ function App() {
             component={Login}
             path="/admin"
           />
-          {/* <AdminRoute
-            user={user.admin || Cookies.get("admin-auth")}
-            exact
-            component={Dashboard}
-            path="/dashboard"
-          /> */}
-          <PublicRoute
+          <AdminRoute
             user={user.admin || Cookies.get("admin-auth")}
             exact
             component={Dashboard}
