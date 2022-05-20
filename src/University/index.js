@@ -16,8 +16,7 @@ export default function index() {
       <Curriculum />
       <Testimonial />
       <SkillsCards />
-      <StudyPlans/>
-     
+      <StudyPlans />
       <Footer />
     </>
   );
