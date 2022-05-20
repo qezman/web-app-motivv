@@ -8,21 +8,21 @@ import testimonialImage3 from "./assets/image 18.jpg";
 
 export let data = [
   {
-    title: "Stay Productive <br/> wherever you are",
+    title: "Stay Productive wherever you are",
     icon: DiamondIcon,
     bgColor: "#FCBF29",
     subTitle:
-      "Never let location be an issue to pursue       your design career. At motivv, you can        conveniently access all your courses       wherever you are.",
+      "Never let location be an issue to pursue your design career. At motivv, you can conveniently access all your courses  wherever you are.",
   },
   {
-    title: "Study with the widely <br/> accepted industrial curriculum",
+    title: "Study with the widely accepted industrial curriculum",
     icon: BookIcon,
     bgColor: "#F7FBFF",
     subTitle:
       "Our curriculum is created according to the standard of the Design industry. At Motivv, you become a professional qualified to compete at every level.",
   },
   {
-    title: "Track your progress <br/> in real-time",
+    title: "Track your progress  in real-time",
     icon: UpIcon,
     bgColor: "#FFF",
     subTitle:
