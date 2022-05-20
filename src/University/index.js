@@ -15,12 +15,9 @@ export default function index() {
       <KickStart /> */}
       <Curriculum />
       <Testimonial />
-<<<<<<< HEAD
       {/* <SkillsCards /> */}
       <StudyPlans/>
-=======
-      <SkillsCards />
->>>>>>> aa1bae4647e15d50314582a6d1651a172d79a368
+     
       <Footer />
     </>
   );

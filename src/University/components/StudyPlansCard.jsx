@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import "../styles/studyPlansCard.css";
-import Results from "./Results";
+import RegistrationForm from "./RegistrationForm";
 
 const StudyPlansCard = () => {
   const [value, setValue] = useState("option1");
-  const [showResults, setShowResults] = useState(false);
+  const [showResults, setShowResults] = useState(true);
 
   const handleChange = changeEvent => {
     setValue(changeEvent.target.value);
@@ -19,7 +19,6 @@ const StudyPlansCard = () => {
           className="card study__plans__section__card"
           style={{
             border: value === "option1" ? "solid 3px #134A7C" : "solid 1px #134A7C",
-            // borderRadius: value === "option1" ? "8px" : "8px",
           }}
         >
           <div className="study__plans__section__card__input">
@@ -57,7 +56,6 @@ const StudyPlansCard = () => {
           className="card study__plans__section__card third__study__plans__card"
           style={{
             border: value === "option3" ? "solid 3px #134A7C" : "solid 1px #134A7C",
-            // borderRadius: value === "option3" ? "8px" : "8px",
           }}
         >
           <div className="study__plans__section__card__input">
@@ -94,7 +92,7 @@ const StudyPlansCard = () => {
         </div>
       </div>
 
-      {showResults ? <Results /> : ""}
+      {showResults ? <RegistrationForm /> : ""}
     </div>
   );
 };

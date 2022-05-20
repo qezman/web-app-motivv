@@ -54,4 +54,15 @@ export const testimonialData = [
 ];
 
 
-
+export const designNicheList = [
+  {
+    id: 1,
+    value: "0",
+    text:"Princess",
+  },
+  {
+    id: 2,
+    value: "1",
+    text: "Is here"
+  } 
+];
