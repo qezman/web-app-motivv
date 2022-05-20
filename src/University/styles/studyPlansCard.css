@@ -10,10 +10,11 @@
   justify-content: center;
   align-items: center;
   width: 369px;
-  height: 649px;
+  height: 570px;
   padding: 20px 10px 0px;
   border-radius: 8px;
   position: relative;
+  overflow: hidden;
 }
 .study__plans__section__card__input {
   position: absolute;
@@ -23,20 +24,26 @@
 .study__plans__section__card__input input {
   height: 24px;
   width: 24px;
-  
 }
-.third__study__plans__card{
-    background-color: #134A7C;
+.study__plans__section__card__input__free,
+.study__plans__section__card__input__premium {
+  width: 369px;
+  height: 169px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+.third__study__plans__card {
+  background-color: #134a7c;
 }
 .third__study__plans__card .study__plans__section__sub h2 span,
 .third__study__plans__card .study__plans__section__sub h2,
 .third__study__plans__card .study__plans__section__sub p,
 .third__study__plans__card .study__plans__section__card__first__sub h4,
 .third__study__plans__card .study__plans__section__card__first__sub p,
-.third__study__plans__card  .study__plans__section__card__second__sub p {  
-    color: #fff;
+.third__study__plans__card .study__plans__section__card__second__sub p {
+  color: #fff;
 }
-
 
 .study__plans__section__sub h2 span {
   font-weight: 700;
@@ -66,8 +73,30 @@
   flex-direction: column;
   background: rgba(19, 74, 124, 0.06);
   border-radius: 5px;
-  margin-top: 50px;
+  margin-bottom: 15px;
   padding: 50px 20px;
+}
+.study__plans__section__card__input__free__tag,
+.study__plans__section__card__input__premium__tag {
+  position: absolute;
+  top: 1.2rem;
+  transform: rotate(45deg);
+  right: -9rem;
+  padding: 5px 30px;
+  width: 100%;
+  text-align: center;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.study__plans__section__card__input__premium__tag {
+  background: #f89707;
+}
+.study__plans__section__card__input__free__tag {
+  background: #134a7c;
 }
 .study__plans__section__card__first__sub {
   margin-bottom: 60px;
@@ -88,19 +117,18 @@
   color: #131313;
 }
 
-
 @media (max-width: 768px) {
   .study__plans__section__card__container {
     display: grid;
 
-  grid-gap: 2rem;
-  gap: 2rem;
-  margin: 80px auto 40px;
+    grid-gap: 2rem;
+    gap: 2rem;
+    margin: 80px auto 40px;
     grid-template-columns: repeat(1, 1fr);
 
-  /* overflow-x: auto;
+    /* overflow-x: auto;
   flex-wrap: nowrap;
   width: 508px;
   margin: auto; */
-}
+  }
 }

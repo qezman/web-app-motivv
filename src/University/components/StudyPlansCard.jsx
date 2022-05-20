@@ -18,24 +18,28 @@ const StudyPlansCard = () => {
         <div
           className="card study__plans__section__card"
           style={{
-            border: value === "option1" ? "solid 3px #134A7C" : "solid 1px #134A7C",
+            border:
+              value === "option1" ? "solid 3px #134A7C" : "solid 1px #134A7C",
           }}
         >
-          <div className="study__plans__section__card__input">
-            <input
-              type="radio"
-              onChange={handleChange}
-              label="option1"
-              checked={value === "option1"}
-              value="option1"
-              onClick={onClick}
-            />
-          </div>
-          <div className="study__plans__section__sub">
-            <h2>
-              ₦ <span>20,000</span>.00
-            </h2>
-            <p>Full Curriculum</p>
+          <div className="study__plans__section__card__input__free">
+            <span className="study__plans__section__card__input__free__tag">Free</span>
+            <div className="study__plans__section__card__input">
+              <input
+                type="radio"
+                onChange={handleChange}
+                label="option1"
+                checked={value === "option1"}
+                value="option1"
+                onClick={onClick}
+              />
+            </div>
+            <div className="study__plans__section__sub">
+              <h2>
+                ₦ <span>20,000</span>.00
+              </h2>
+              <p>Full Curriculum</p>
+            </div>
           </div>
 
           <div className=" study__plans__section__card__sub__section">
@@ -55,23 +59,27 @@ const StudyPlansCard = () => {
         <div
           className="card study__plans__section__card third__study__plans__card"
           style={{
-            border: value === "option3" ? "solid 3px #134A7C" : "solid 1px #134A7C",
+            border:
+              value === "option3" ? "solid 3px #134A7C" : "solid 1px #134A7C",
           }}
         >
-          <div className="study__plans__section__card__input">
-            <input
-              type="radio"
-              onChange={handleChange}
-              checked={value === "option3"}
-              value="option3"
-              onClick={onClick}
-            />
-          </div>
-          <div className="study__plans__section__sub">
-            <h2>
-              ₦ <span>100,000</span>.00
-            </h2>
-            <p>Full Curriculum</p>
+          <div className="study__plans__section__card__input__premium">
+            <span className="study__plans__section__card__input__premium__tag">Premium</span>
+            <div className="study__plans__section__card__input">
+              <input
+                type="radio"
+                onChange={handleChange}
+                checked={value === "option3"}
+                value="option3"
+                onClick={onClick}
+              />
+            </div>
+            <div className="study__plans__section__sub">
+              <h2>
+                ₦ <span>100,000</span>.00
+              </h2>
+              <p>Full Curriculum</p>
+            </div>
           </div>
 
           <div className=" study__plans__section__card__sub__section">
