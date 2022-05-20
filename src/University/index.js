@@ -10,13 +10,13 @@ import Curriculum from "./components/Curriculum";
 export default function index() {
   return (
     <>
-      {/* <Header />
-      <KickStart /> */}
+      <Header />
+      <KickStart />
       <Curriculum/>
       <Testimonial/>
-      {/* <SkillsCards /> */}
+      <SkillsCards />
      
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 }
