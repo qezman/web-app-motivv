@@ -9,7 +9,12 @@ export default function KickStartCards({
   return (
     <div
       className="d-flex-column pt-5 pb-4 px-3"
-      style={{ backgroundColor: bgColor, color: "#000" }}
+      style={{
+        backgroundColor: bgColor,
+        color: "#000",
+        height: "350px",
+        width: "auto",
+      }}
     >
       <Icon />
       <h4
