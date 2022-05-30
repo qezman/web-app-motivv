@@ -56,9 +56,17 @@
     font-weight: 700;
 }
 
+.w-90 {
+    width: 65%;
+}
+
 @media (max-width: 760px) {
     .email-tag {
-        width: 70%;
+        width: 85%;
         padding: 17px 46px;
+    }
+    .b-active,
+    .b-normal {
+        width: 85%;
     }
 }

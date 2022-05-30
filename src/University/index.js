@@ -13,11 +13,11 @@ export default function index() {
   return (
     <>
       <Header />
-      {/* <KickStart /> */}
+      <KickStart />
       <Curriculum />
       <Testimonial />
-      {/* <SkillsCards /> */}
-      {/* <Accordions /> */}
+      <SkillsCards />
+      <Accordions />
       <StudyPlans />
       <Footer />
     </>

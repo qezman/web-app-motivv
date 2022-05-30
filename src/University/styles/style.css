@@ -156,7 +156,7 @@ button:active {
     }
     .styled-header>div {
         width: 100%;
-        padding: 100px 0px;
+        padding: 100px 20px;
     }
     .sm-none {
         display: none;
