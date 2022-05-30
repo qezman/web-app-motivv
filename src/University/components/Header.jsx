@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Fade from "react-reveal";
 import "../styles/style.css";
 import Slider from "react-slick";
-import {  Button } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import DownIcon from "../assets/arrow_downward.svg";
 import NavBar from "./NavBar";
 import Img1 from "../assets/Rectangle 406-1.jpg";
@@ -106,7 +106,14 @@ const Header = () => {
         </div>
       </div>
 
-      <div style={{ background: "#0f4374", width: "100vw", paddingLeft: "7%" }}>
+      <div
+        style={{
+          background: "#0f4374",
+          width: "100vw",
+          paddingLeft: "7%",
+          overflowX: "hidden",
+        }}
+      >
         <Slider {...settings}>
           <div className="">
             <div className="">

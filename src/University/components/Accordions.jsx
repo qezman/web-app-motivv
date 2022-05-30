@@ -40,10 +40,10 @@ export default function Accordions() {
   return (
     <div className="d-flex flex-column align-items-center justify-content-center p-accs pb-5">
       <h3 className="h-active font-weight-bold ">FAQS</h3>
-      <p className="text-align-center text-center mb-5">
-        We have curated some questions you may have and we <br />
-        have given satisfactory answers. We believe you <br />
-        will have no more questions after going through them.
+      <p className="text-align-center text-center mb-5 w-90">
+        We have curated some questions you may have and we have given
+        satisfactory answers. We believe you will have no more questions after
+        going through them.
       </p>
       {data.map((info, index) => (
         <Accordion {...info} key={index} />
