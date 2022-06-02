@@ -1,49 +1,75 @@
 import React from "react";
-import { Row, } from "react-bootstrap";
+import { Row } from "react-bootstrap";
 import style from "./BusinessTemplateCard.module.css";
 import ContributorIcon from "../../../assets/contributor-icon.svg";
 import { Badge } from "react-bootstrap";
+import Figma from "../../../assets/figma.svg";
+import Notion from "../../../assets/notion.png";
+import Airtable from "../../../assets/airtable.png";
+import Office from "../../../assets/office.png";
+import Sheets from "../../../assets/sheets.png";
 
 export const BusinessTemplateCard = ({
-  type,
-  caption,
-  content,
-  logo,
-  likes = "0",
-  contributor,
-  link,
-  tags,
+  title,
+  description,
+  name,
+  category,
+  tool,
+  url,
+  likes,
 }) => {
   const [red] = React.useState(Math.ceil(Math.random() * 300));
   const [green] = React.useState(Math.ceil(Math.random() * 300));
   const [blue] = React.useState(Math.ceil(Math.random() * 300));
   const [liked, setLiked] = React.useState(false);
+
+  const getImageForType = () => {
+    switch (tool.toLowerCase()) {
+      case "figma":
+        return Figma;
+      case "notion":
+        return Notion;
+      case "airtable":
+        return Airtable;
+      case "sheets":
+        return Sheets;
+      case "office":
+        return Office;
+      default:
+        return Figma;
+    }
+  };
+
   return (
-    <div className={style.templateCard} datatype={type}>
+    <div className={style.templateCard} datatype={tool}>
       <section className={style.templateCardTop}>
         <figure
           className={style.cardImage}
           style={{ backgroundColor: `rgb(${red}, ${green}, ${blue}, 0.1)` }}
         >
-          <img src={logo} alt={`resource of ${type}`} />
+          <img src={getImageForType()} alt={`resource of ${tool}`} />
         </figure>
-        <h2 className={style.templateCardCaption}>{caption}</h2>
+        <h2 className={style.templateCardCaption}>{title}</h2>
       </section>
       <section className={style.templateCardContent}>
-        <p>{content}</p>
+        <p>{description}</p>
       </section>
-      <section className={style.templateCardTags}>
-        {tags.map((tag, i) => {
-          return (
-            <span key={i} className={style.templateCardTag}>
-              {`${"#"}${tag}`}
-            </span>
-          );
-        })}
-      </section>
+      {/*<section className={style.templateCardTags}>
+        { &&
+          tags.map((tag, i) => {
+            return (
+              <span key={i} className={style.templateCardTag}>
+                {`${"#"}${tag}`}
+              </span>
+            );
+          })}
+        </section>*/}
+      {/*<section className={style.templateCardTags}>
+        <span className={style.templateCardTag}>{category.toUpperCase()}</span>*
+      </section>*/}
       <Row className={style.templateCardMore}>
         <Badge
-          pull
+          pill
           className="d-flex mot-template-label template-sm-font"
           onClick={() => setLiked(!liked)}
         >
@@ -57,27 +83,31 @@ export const BusinessTemplateCard = ({
             <path
               d="M4.66671 1.56934C2.82604 1.56934 1.33337 3.04423 1.33337 4.8639C1.33337 6.33281 1.91671 9.81905 7.65871 13.3432C7.76156 13.4057 7.87964 13.4388 8.00004 13.4388C8.12044 13.4388 8.23852 13.4057 8.34137 13.3432C14.0834 9.81905 14.6667 6.33281 14.6667 4.8639C14.6667 3.04423 13.174 1.56934 11.3334 1.56934C9.49271 1.56934 8.00004 3.56604 8.00004 3.56604C8.00004 3.56604 6.50737 1.56934 4.66671 1.56934Z"
               stroke={!liked ? "#134A7C" : "#455880"}
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
           </svg>
 
-          <span>likes</span>
+          <span>{likes}</span>
         </Badge>
 
         <Badge
-          pull
+          pill
           className="d-flex mot-template-label template-sm-font"
           onClick={() => setLiked(!liked)}
         >
           <img src={ContributorIcon} alt="contributor icon" />
-          <span>Contributor</span>
+          <span>{name}</span>
         </Badge>
 
         <Badge
-          pull
+          pill
           className="d-flex mot-template-label template-sm-font flex-row-reverse"
+          onClick={async () => {
+            await navigator.clipboard.writeText(url);
+            await alert("Copied the text: " + url);
+          }}
         >
           <svg
             width="16"
