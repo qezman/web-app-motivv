@@ -48,7 +48,10 @@
 }
 
 .templateCardMore {
-  margin-top: 1rem;
+  margin: 1rem auto auto;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(auto, auto));
+  column-gap: .35rem;
 }
 
 @media (max-width: 500px) {

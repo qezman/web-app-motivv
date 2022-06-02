@@ -15,7 +15,7 @@ export const ToolTypeItem = ({ icon, type }) => {
           className={style.motTemplateToolInputCheckbox}
         />
         <span className={style.motTemplateCheck}></span>
-        <label for='mot-template-checkbox'></label>
+        <label htmlFor='mot-template-checkbox'></label>
       </div>
     </div>
   )
