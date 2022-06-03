@@ -102,8 +102,7 @@ export default function index() {
                   <Link to="#">Design School (coming soon)</Link>
                 </div>
                 <div className="mt-2">
-                  {/* <Link to='/business-template'>Business Templates</Link> */}
-                  <Link to="#">Business Templates(coming soon)</Link>
+                  <Link to="/business-template">Business Templates</Link>
                 </div>
               </div>
             </Col>

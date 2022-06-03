@@ -10,6 +10,7 @@ import { TemplateContainer } from "./TemplatesContainer/TemplateContainer";
 import axios from "axios";
 const BusinessTemplateComponent = () => {
   const [templates, setTemplates] = useState([]);
+  const [templatesCopy, setTemplatesCopy] = useState([]);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     const fetchTemplates = async () => {
@@ -19,6 +20,7 @@ const BusinessTemplateComponent = () => {
           "https://www.motivv.co/api/fetchTemplates.php"
         );
         await setTemplates(response.data.templates);
+        await setTemplatesCopy(response.data.templates);
         setLoading(false);
       } catch (e) {
         console.log("An error occurredF");
@@ -52,7 +54,11 @@ const BusinessTemplateComponent = () => {
       <Container className="mot-business-template-container">
         <Row className="mot-business-template-main">
           <Col md={2}>
-            <TemplateSidebar templates={templates} />
+            <TemplateSidebar
+              templates={templates}
+              copy={templatesCopy}
+              setTemplates={setTemplates}
+            />
           </Col>
           <Col md={9} className="ml-md-5">
             {loading ? (

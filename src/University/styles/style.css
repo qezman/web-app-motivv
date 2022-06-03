@@ -133,7 +133,7 @@ button:active {
 
 #root>div:nth-child(3)>div>div>div>div:nth-child(n) {
     height: 286px;
-    width: 255px !important;
+    width: 255px;
 }
 
 .ds-inline-res {
@@ -166,6 +166,6 @@ button:active {
     }
     #root>div:nth-child(3)>div>div>div>div:nth-child(n) {
         height: 186px;
-        width: 155px !important;
+        width: 155px;
     }
 }
