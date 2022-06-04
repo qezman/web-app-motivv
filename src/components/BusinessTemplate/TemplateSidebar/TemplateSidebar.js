@@ -4,7 +4,7 @@ import style from "./template-sidebar.module.css";
 import { SidebarCategories } from "./SidebarCategories";
 import { SidebarTools } from "./SidebarTools";
 
-const TemplateSidebar = ({ templates }) => {
+const TemplateSidebar = ({ templates, copy, setTemplates }) => {
   const clients = templates.filter(
     (t) => t.category.toLowerCase() === "client"
   ).length;
@@ -45,7 +45,7 @@ const TemplateSidebar = ({ templates }) => {
         <p>View More</p>
         */}
       </span>
-      <SidebarTools />
+      <SidebarTools copy={copy} setTemplates={setTemplates} />
     </div>
   );
 };
