@@ -1,4 +1,5 @@
-import React from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useState } from "react";
 import { Row } from "react-bootstrap";
 import style from "./BusinessTemplateCard.module.css";
 import ContributorIcon from "../../../assets/contributor-icon.svg";
@@ -8,20 +9,36 @@ import Notion from "../../../assets/notion.png";
 import Airtable from "../../../assets/airtable.png";
 import Office from "../../../assets/office.png";
 import Sheets from "../../../assets/sheets.png";
+import axios from "axios";
 
 export const BusinessTemplateCard = ({
   title,
   description,
   name,
-  category,
+  //category,
   tool,
   url,
   likes,
+  id,
 }) => {
+  //next three lines are state values to generate random red, blue and green bakcground colors to be used on the cards
   const [red] = React.useState(Math.ceil(Math.random() * 300));
   const [green] = React.useState(Math.ceil(Math.random() * 300));
   const [blue] = React.useState(Math.ceil(Math.random() * 300));
+  // state to check the liked status of a template
   const [liked, setLiked] = React.useState(false);
+  /* 
+  * state to keep tranck of the amount of likes a template has gathered, from props
+  * A string amount is been sent which is converted into a number for better mathematical operations
+  */
+  const [amountOfLikes, setAmountOfLikes] = useState(Number(likes));
+
+  useEffect(() => {
+    let data = localStorage.getItem("motivv_liked");
+    if (data) {
+      setLiked(data.split(",").includes(id));
+    }
+  }, []);
 
   const getImageForType = () => {
     switch (tool.toLowerCase()) {
@@ -40,6 +57,67 @@ export const BusinessTemplateCard = ({
     }
   };
 
+  const truncateName = (name) => {
+    let length = name.length;
+    if (length < 12) {
+      return name;
+    } else {
+      return name.slice(0, 11) + "...";
+    }
+  };
+
+  const handleLikePost = async (type, nextAction) => {
+    try {
+      const { data } = await axios.post(
+        "https://www.motivv.co/api/processTemplateLike.php",
+        {
+          id: id,
+          type: type,
+        }
+      );
+      if (data.success === 1) {
+        nextAction();
+      }
+    } catch (e) {
+      console.log("An error occurred");
+    }
+  };
+
+  const processLikeStatus = async () => {
+    let data = localStorage.getItem("motivv_liked");
+    let newData;
+    if (data === null) {
+      await handleLikePost("liked", () => {
+        localStorage.setItem("motivv_liked", [id]);
+        setAmountOfLikes(amountOfLikes + 1);
+        return setLiked(true);
+      });
+    }
+    if (data) {
+      let arrData = data.split(",");
+      let isCurrentlyLiked = arrData.includes(id);
+      if (isCurrentlyLiked) {
+        await handleLikePost("unliked", () => {
+          newData = arrData.filter((d) => d !== id);
+          setLiked(false);
+          setAmountOfLikes(amountOfLikes - 1);
+          newData.length < 1
+            ? localStorage.removeItem("motivv_liked")
+            : localStorage.setItem("motivv_liked", newData);
+        });
+      } else {
+        await handleLikePost("liked", () => {
+          newData = [...arrData, id];
+          setLiked(true);
+          setAmountOfLikes(amountOfLikes + 1);
+          newData.length < 1
+            ? localStorage.removeItem("motivv_liked")
+            : localStorage.setItem("motivv_liked", newData);
+        });
+      }
+    }
+  };
+
   return (
     <div className={style.templateCard} datatype={tool}>
       <section className={style.templateCardTop}>
@@ -52,7 +130,7 @@ export const BusinessTemplateCard = ({
         <h2 className={style.templateCardCaption}>{title}</h2>
       </section>
       <section className={style.templateCardContent}>
-        <p>{description}</p>
+        <p style={{ height: "60px" }}>{description}</p>
       </section>
       {/*<section className={style.templateCardTags}>
         { &&
@@ -71,7 +149,7 @@ export const BusinessTemplateCard = ({
         <Badge
           pill
           className="d-flex mot-template-label template-sm-font"
-          onClick={() => setLiked(!liked)}
+          onClick={() => processLikeStatus()}
         >
           <svg
             width="16"
@@ -89,7 +167,7 @@ export const BusinessTemplateCard = ({
             />
           </svg>
 
-          <span>{likes}</span>
+          <span>{amountOfLikes}</span>
         </Badge>
 
         <Badge
@@ -98,7 +176,8 @@ export const BusinessTemplateCard = ({
           onClick={() => setLiked(!liked)}
         >
           <img src={ContributorIcon} alt="contributor icon" />
-          <span>{name}</span>
+
+          <span>{truncateName(name)}</span>
         </Badge>
 
         <Badge
