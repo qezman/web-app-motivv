@@ -94,6 +94,10 @@
 
 @media screen and (max-width: 700px){
 
+    .mot-access-section-caption {
+    display: none;
+  }
+
     .mot-access-container{
         padding: 80px 0 0px;
         background: #FFF2DF;
@@ -109,6 +113,12 @@
 
     .mot-apply-as-designer{
         padding-bottom: 0;
+        margin-top: -100px;
+        margin-left: 150px;
+    }
+
+    .mot-apply-as-designer button {
+        padding: 10px 20px;
     }
 
     .mot-access-dots{

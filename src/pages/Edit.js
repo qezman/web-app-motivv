@@ -17,35 +17,80 @@ export default function Edit(props) {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errorValue, setErrorValue] = useState("");
+
+  const validateForm = () => {
+    if (!phone || !email) {
+      setError(true);
+      setErrorValue("Please fill all required fields.")
+      return false;
+    }
+
+    if (!ValidateEmail(email)) {
+      setError(true)
+      setErrorValue("You have entered an invalid email address.")
+      return false;
+    }
+
+    setError(false)
+    setErrorValue("");
+    return true;
+  }
+
   function ValidateEmail(mail) {
     const expression = /\S+@\S+/;
     return expression.test(String(email).toLowerCase());
   }
+  // const handleSubmit = async (e) => {
+
+  //   e.preventDefault();
+  //   setLoading(true);
+  //   if (!phone && !email) {
+  //     setError(true);
+  //     setLoading(false);
+  //     setErrorValue("Please fill all required field");
+  //   } else if (!ValidateEmail(email)) {
+  //     setLoading(false);
+  //     setError(true);
+  //     setErrorValue("You have entered an invalid email address!");
+  //   } else {
+  //     await axios.post(url, { phone, email }).then((res) => {
+  //       if (res.data.success === 1) {
+  //         setError(true);
+  //         setErrorValue(res.data.msg);
+  //         props.history.push(`/update/${res.data.id}/${email}/${phone}`);
+  //       } else {
+  //         setError(true);
+  //         setErrorValue(res.data.msg);
+  //         setLoading(false);
+  //       }
+  //     });
+  //   }
+  // };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    if (!phone && !email) {
-      setError(true);
-      setLoading(false);
-      setErrorValue("Please fill all required field");
-    } else if (!ValidateEmail(email)) {
-      setLoading(false);
-      setError(true);
-      setErrorValue("You have entered an invalid email address!");
-    } else {
-      await axios.post(url, { phone, email }).then((res) => {
-        if (res.data.success === 1) {
-          setError(true);
-          setErrorValue(res.data.msg);
-          props.history.push(`/update/${res.data.id}/${email}/${phone}`);
-        } else {
-          setError(true);
-          setErrorValue(res.data.msg);
-          setLoading(false);
-        }
-      });
+    if(!validateForm()) {
+      return;
     }
-  };
+    setLoading(true);
+
+    try {
+      const response = await axios.post(url, {phone, email});
+      if (response.data.success === 1) {
+        setError(false);
+        setErrorValue(response.data.msg);
+        props.history.push(`/update/${response.data.id}/${email}/${phone}`);
+      } else {
+        setError(true)
+        setErrorValue(response.data.msg);
+      }
+    } catch (error) {
+      setError(true);
+      setErrorValue("An error occured while processing your request.")
+    } finally {
+      setLoading(false);
+    }
+  }
   useEffect(() => {
     setTimeout(() => {
       setError(false);

@@ -11,7 +11,7 @@ let edit =
   "https://res.cloudinary.com/denw9euui/image/upload/v1594654144/Motivv/Vector_tnnrwv.png";
 let close =
   "https://res.cloudinary.com/denw9euui/image/upload/v1594654144/Motivv/ion_close-circle_xsgnnq.png";
-const url = `${URL}/processForm.php/`;
+const url = `${URL}/`;
 export default function ApplyCard() {
   const [editActive, setEditActive] = useState(true);
   const [total, setTotal] = useState("");
@@ -29,6 +29,7 @@ export default function ApplyCard() {
   const [skill4, setSkill4] = useState([]);
   const [error, setError] = useState(false);
   const [errorValue, setErrorValue] = useState("");
+
   const allTitles = [
     "Graphic Designer",
     "Logo Designer",
@@ -71,15 +72,65 @@ export default function ApplyCard() {
     link: "",
     image: null,
   });
+
+  const [formErrors, setFormErrors] = useState({
+    name: "",
+    email: "",
+    phoneCode: "",
+    phone: "",
+    link: "",
+    image: "",
+    title: "",
+    skill1: "",
+    skill2: "",
+    skill3: "",
+    skill4: "",
+  });
+
+  const validateForm = () => {
+    let isValid = true;
+    const newFormErrors = {
+      name: "",
+      email: "",
+      phoneCode: "",
+      phone: "",
+      link: "",
+      image: "",
+      title: "",
+      skill1: "",
+      skill2: "",
+      skill3: "",
+      skill4: "",
+    };
+
+    if (!input.name) {
+      newFormErrors.name = "Please enter your name";
+      isValid = false;
+    }
+
+    if (!input.email) {
+      newFormErrors.email = "Please enter a valid email";
+      isValid = false;
+    }
+
+
+    setFormErrors(newFormErrors);
+
+    return isValid;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (validateForm()) {
+      setLoading(true);
+
     let linkk;
     if (input.link.includes("http")) {
       linkk = input.link;
     } else {
       linkk = `https://${input.link}`;
     }
-    setLoading(true);
+    // setLoading(true);
     if (
       !input.name ||
       !input.email ||
@@ -115,13 +166,12 @@ export default function ApplyCard() {
       if (skill3.length > 0) formData.append("skill3", skill3[0]);
       if (skill4.length > 0) formData.append("skill4", skill4[0]);
       formData.append("picture", input.image);
-      await axios
-        .post(url, formData, {
+      try {
+        const res = await axios.post(url, formData, {
           headers: {
             "content-type": "multipart/form-data",
           },
-        })
-        .then((res) => {
+        });
           if (res.data.success === 1) {
             setError(true);
             setErrorValue(res.data.msg);
@@ -150,9 +200,17 @@ export default function ApplyCard() {
             setErrorValue(res.data.msg);
             setLoading(false);
           }
-        });
+        } catch (error) {
+          console.error("Form submission error:", error);
+          setError(true);
+          setErrorValue("An error occurred during form submission");
+          setLoading(false);
+        }
     }
-  };
+  } else {
+    console.log("Form validation failed");
+  }
+};
   useEffect(() => {
     setTimeout(() => {
       setError(false);

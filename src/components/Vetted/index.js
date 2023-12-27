@@ -65,19 +65,24 @@ export default function Vetted({ props }) {
       setError(true);
       setErrorValue("You have entered an invalid email address!");
     } else {
-      await axios.post(url, { email }).then((res) => {
-        if (res.data.success === 1) {
+      try {
+        const response = await axios.post(url, { email });
+
+        if (response.data.success === 1) {
+          console.log("Worked!!");
           setError(false);
-          Cookies.set("user-auth", email, {
-            expires: 1,
-          });
+          Cookies.set("user-auth", email, { expires: 1 });
           user.setUser(Cookies.get("user-auth"));
           props.history.push("/explore");
         } else {
           setError(true);
-          setErrorValue(res.data.msg);
+          setErrorValue(response.data.msg);
         }
-      });
+      } catch (error) {
+        console.error("Error during axios.post:", error);
+        setError(true);
+        setErrorValue("An error occurred during the request");
+      }
     }
   };
   useEffect(() => {

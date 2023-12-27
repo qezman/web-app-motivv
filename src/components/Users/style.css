@@ -52,7 +52,19 @@
     margin-left: 20px;
 }
 
+.small-text {
+    display: block;
+}
+
 @media screen and (max-width: 700px){
+    .small-text {
+        display: none;
+    }
+    .mot-placeholder-card,
+    .mot-placeholder-card2 {
+        /* height: 40px !important; */
+        display: none;
+    }
     .mot-user-guide2,
     .mot-user-guide {
         padding: 30px 20px;

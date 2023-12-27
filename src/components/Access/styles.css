@@ -62,7 +62,11 @@
 
 @media screen and (max-width: 700px){
 
-    .mot-access-container{
+    .mot-access-section-caption {
+        display: none !important;
+    }
+
+    .mot-access-container {
         padding: 80px 0 0px;
         background: #FFF2DF;
     }
@@ -87,7 +91,7 @@
         display: flex !important;
         margin: 0 auto !important;
         width: 70% !important;
-        padding-top: 80px;
+        padding-top: 800px;
     }
 
     .mot-access-wrapper h6{
@@ -106,4 +110,5 @@
         z-index: 200;
         width: 100%;
     }
+    
 }
