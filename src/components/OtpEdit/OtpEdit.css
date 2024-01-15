@@ -1,0 +1,95 @@
+.Otp-background {
+  display: flex;
+  /* width: 1440px; */
+  /* height: 1024px; */
+  padding: 174px 249px;
+  justify-content: center;
+  align-items: center;
+  background: #1c468e;
+}
+
+.Otp-card {
+  width: 942px;
+  height: 676px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: #f3f3f3;
+}
+
+.Login-acct {
+  color: #000;
+  font-size: 24px;
+  font-weight: 600;
+  padding: 31px 0 0 55px;
+}
+
+.hello-text {
+  color: #575454;
+  font-size: 20px;
+  font-weight: 600;
+  padding: 27px 0 0 55px;
+}
+.name-text {
+  color: #a6a6a6;
+  font-size: 16px;
+  padding: 27px 0 0 55px;
+  font-weight: 600;
+}
+/* Styles for the Name text input */
+.name-input {
+  width: 80%;
+  border: none;
+  border-bottom: 1px solid #333; /* Color of the underline border */
+  padding: 0 0 8px 0; /* Adjust the padding as needed */
+  font-size: 16px; /* Adjust the font size as needed */
+  outline: none; /* Remove the default input outline */
+  margin: 27px 0 0 55px;
+  background: none;
+}
+
+/* Optional: Style the input when it is focused */
+.name-input:focus {
+  border-color: #007bff; /* Change the color of the border on focus */
+}
+.blue-btn {
+  display: flex;
+  width: 418px;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 5px;
+  background: #1c468e;
+  margin-top: 27px;
+  text-decoration: white;
+  color: #fff;
+}
+.otp-btn-container {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}
+.or-text {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center;
+  margin-top: 27px;
+}
+.google-btn {
+  display: flex;
+  width: 418px;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 5px;
+  border: 1px solid #1c468e;
+  margin-top: 27px;
+  text-decoration: white;
+  color: #000;
+}
+.an-acct {
+  display: flex;
+  justify-content: center;
+  margin-top: 27px;
+}

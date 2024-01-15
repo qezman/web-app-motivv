@@ -30,35 +30,60 @@ export const DesignChallengeHero = () => {
   const { name, email } = formDetails;
   const { updateChallengeUser, challengeUser } = useChallenge();
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   setLoading(true);
+  //   if (!email || !name) {
+  //     setError(true);
+  //     setLoading(false);
+  //     setErrorValue("Please fill the required field");
+  //   } else if (!ValidateEmail(email)) {
+  //     setLoading(false);
+  //     setError(true);
+  //     setErrorValue("You have entered an invalid email address!");
+  //   } else {
+  //     await axios.post(url, { email, name }).then((res) => {
+  //       if (res.data.success === 1) {
+  //         setError(false);
+  //         Cookies.set("challenge-user", res.data.user, {
+  //           expires: 1,
+  //         });
+  //         updateChallengeUser(JSON.parse(Cookies.get("challenge-user")));
+  //         history.push("/challenges/dashboard");
+  //       } else {
+  //         setLoading(false);
+  //         setError(true);
+  //         setErrorValue(res.data.msg);
+  //       }
+  //     });
+  //   }
+  // };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    if (!email || !name) {
-      setError(true);
-      setLoading(false);
-      setErrorValue("Please fill the required field");
-    } else if (!ValidateEmail(email)) {
-      setLoading(false);
-      setError(true);
-      setErrorValue("You have entered an invalid email address!");
-    } else {
-      await axios.post(url, { email, name }).then((res) => {
-        if (res.data.success === 1) {
-          setError(false);
-          Cookies.set("challenge-user", res.data.user, {
-            expires: 1,
-          });
-          updateChallengeUser(JSON.parse(Cookies.get("challenge-user")));
-          history.push("/challenges/dashboard");
-        } else {
-          setLoading(false);
-          setError(true);
-          setErrorValue(res.data.msg);
-        }
-      });
-    }
-  };
 
+    try{
+      const response = await axios.post(url, {email, name});
+      if(response.data.success){
+        setError(false)
+        Cookies.set("challenge-user", response.data.user, {
+          expires: 1,
+        })
+        updateChallengeUser(JSON.parse(Cookies.get("challenge-user")));
+        history.push("/challenges/dashboard")
+      } else {
+        setError(true)
+        setErrorValue(response.data.msg)
+      }
+    } catch (error) {
+      console.error("Error during API request:", error);
+    setError(true);
+    setErrorValue("An error occurred while processing your request.");
+    } finally {
+      setLoading(false)
+    }
+  }
   useEffect(() => {
     const postData = async () => {
       await axios.post(url, { email: emaill, name: namee }).then((res) => {

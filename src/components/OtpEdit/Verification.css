@@ -1,0 +1,91 @@
+.Otp-background {
+  display: flex;
+  /* width: 1440px; */
+  /* height: 1024px; */
+  padding: 174px 249px;
+  justify-content: center;
+  align-items: center;
+  background: #1c468e;
+}
+
+.Otp-card {
+  width: 900px;
+  height: 676px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: #f3f3f3;
+}
+.svg-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* min-height: 100vh; */
+  margin-top: 10px;
+}
+svg {
+  width: 100px; /* adjust the size as needed */
+  height: 100px; /* adjust the size as needed */
+  margin-top: 59px;
+}
+
+.container-one {
+  text-align: center;
+}
+
+.verification {
+  padding: 20px 0 10px 0;
+  color: #000;
+  font-size: 20px;
+  font-weight: 600;
+}
+.enter-verification {
+  color: #6b6b6b;
+  font-size: 18px;
+  font-weight: 400;
+}
+.phone {
+  color: #000;
+  font-size: 18px;
+  font-weight: 600;
+}
+.numbers {
+  display: inline-flex;
+  padding: 6.906px;
+  align-items: flex-start;
+  gap: 6.906px;
+}
+
+.figure {
+  display: flex;
+  width: 34.53px;
+  padding: 6.906px;
+  justify-content: center;
+  align-items: center;
+  gap: 6.906px;
+  border-radius: 3.453px;
+  border: 0.691px solid #000;
+}
+.blue-btn {
+  display: flex;
+  width: 418px;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 5px;
+  background: #1c468e;
+}
+
+.otp-btns-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .Otp-card {
+    width: 390px;
+    height: 844px;
+  }
+}

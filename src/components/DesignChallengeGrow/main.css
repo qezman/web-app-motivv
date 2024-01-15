@@ -37,16 +37,36 @@
   line-height: 2.4rem;
   font-weight: 700;
 }
+
+
 @media (max-width: 500px) {
   .mot-dsc-grow_cards {
     flex-direction: column;
   }
 }
+/* @media (min-width: 760px) { */
+  /* Your styles go here */
+  /* mot-dsc-grow_card__text  { */
+    /* background-color: lightblue; */
+  /* } */
 @media (max-width: 850px) {
   .mot-dsc-grow__one h3 {
     margin-top: -5px;
   }
   .mot-dsc-grow_card {
     margin-bottom: 2.3rem;
+    /* padding-right: 200px; */
   }
+    /* ... other styles ... */
+  }
+
+
+.mot-dsc-grow_cards {
+  /* padding-right: 1000px; */
+  background-color: cadetblue;
+}
+
+.mot-dsc-grow_card {
+  background-color: coral;
+  width: 3000px;
 }

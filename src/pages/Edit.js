@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Alert } from "react-bootstrap";
 import Footer from "../components/Footer";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import Helmet from "../components/Helmet";
 import { URL } from "../constants";
@@ -18,29 +18,31 @@ export default function Edit(props) {
   const [loading, setLoading] = useState(false);
   const [errorValue, setErrorValue] = useState("");
 
+  const history = useHistory();
+
   const validateForm = () => {
     if (!phone || !email) {
       setError(true);
-      setErrorValue("Please fill all required fields.")
+      setErrorValue("Please fill all required fields.");
       return false;
     }
 
     if (!ValidateEmail(email)) {
-      setError(true)
-      setErrorValue("You have entered an invalid email address.")
+      setError(true);
+      setErrorValue("You have entered an invalid email address.");
       return false;
     }
 
-    setError(false)
+    setError(false);
     setErrorValue("");
     return true;
-  }
+  };
 
   function ValidateEmail(mail) {
     const expression = /\S+@\S+/;
     return expression.test(String(email).toLowerCase());
   }
-  // const handleSubmit = async (e) => {
+ 
 
   //   e.preventDefault();
   //   setLoading(true);
@@ -69,28 +71,36 @@ export default function Edit(props) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if(!validateForm()) {
+
+    console.log("phone:", phone);
+    console.log("email:", email);
+
+    if (!validateForm()) {
       return;
     }
     setLoading(true);
 
     try {
-      const response = await axios.post(url, {phone, email});
+      const response = await axios.post(url, { phone, email });
       if (response.data.success === 1) {
         setError(false);
         setErrorValue(response.data.msg);
         props.history.push(`/update/${response.data.id}/${email}/${phone}`);
+
+        history.push('/otp-edit')
+
       } else {
-        setError(true)
+        setError(true);
         setErrorValue(response.data.msg);
       }
     } catch (error) {
       setError(true);
-      setErrorValue("An error occured while processing your request.")
+      setErrorValue("An error occured while processing your request.");
     } finally {
       setLoading(false);
     }
-  }
+  };
+
   useEffect(() => {
     setTimeout(() => {
       setError(false);

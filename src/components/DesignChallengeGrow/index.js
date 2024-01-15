@@ -42,6 +42,8 @@ export const DesignChallengeGrow = () => {
             >
               <Col className="m-0 p-0 d-flex" md={5}>
                 <Slide left>
+
+                {/* card to be adjusted */}
                   <div className="mot-dsc-grow_card position-relative d-flex flex-column">
                     <figure>
                       <img src={Pratical} alt="Gain pratical Knowledge" />

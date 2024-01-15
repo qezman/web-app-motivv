@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import "./styles.css";
 import { URL } from "../../constants";
+import { useHistory } from "react-router-dom";
+import validator from "validator";
 
 let Logo =
   "https://res.cloudinary.com/denw9euui/image/upload/v1594310687/Motivv/logo_wwolum.png";
@@ -12,7 +14,25 @@ let upload =
   "https://res.cloudinary.com/denw9euui/image/upload/v1594422865/upload_sncmdm.png";
 
 const url = `${URL}post-job.php/`;
+
+
+
+function isValidEmail(email) {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}
+
+// Helper function to check if the URL is valid
+// function isValidURL(url) {
+//   const urlRegex = /^(http|https):\/\/[^\s$.?#].[^\s]*$/;
+//   return urlRegex.test(url);
+// }
+function isValidURL(url) {
+  return validator.isURL(url, { require_protocol: true });
+}
+
 export default function JobPostPage() {
+  const history = useHistory();
   const [input, setInput] = useState({
     companyName: "",
     title: "",
@@ -29,62 +49,160 @@ export default function JobPostPage() {
 
   const [error, setError] = useState(false);
   const [errorValue, setErrorValue] = useState("");
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   setError(false);
+  //   setErrorValue("Please fill all required fields");
+  //   setLoading(true);
+  //   if (
+  //     !input.companyName ||
+  //     !input.title ||
+  //     !input.email ||
+  //     !input.location ||
+  //     !input.jobType ||
+  //     !input.instructions ||
+  //     !input.websiteUrl
+  //   ) {
+  //     setError(true);
+  //     setErrorValue("Please fill all required fields");
+  //     setLoading(false);
+  //   } else {
+  //     let formData = new FormData();
+  //     formData.append("companyName", input.companyName);
+  //     formData.append("title", input.title);
+  //     formData.append("email", input.email);
+  //     formData.append("location", input.location);
+  //     formData.append("type", input.jobType);
+  //     formData.append("company", input.image);
+  //     formData.append("instructions", input.instructions);
+  //     formData.append("websiteUrl", input.websiteUrl);
+  //     axios
+  //       .post(url, formData, {
+  //         headers: {
+  //           "content-type": "multipart/form-data",
+  //         },
+  //       })
+  //       .then((res) => {
+  //         if (res.data.success === 1) {
+  //           setError(true);
+  //           setErrorValue(res.data.msg);
+  //           setInput({
+  //             companyName: "",
+  //             title: "",
+  //             email: "",
+  //             location: "",
+  //             jobType: "",
+  //             image: null,
+  //             instructions: "",
+  //           });
+  //           setLoading(false);
+  //           setImageUrl(upload);
+  //         } else {
+  //           setError(true);
+  //           setErrorValue(res.data.msg);
+  //           setLoading(false);
+  //         }
+  //       });
+  //   }
+  // };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    setError(false);
-    setErrorValue("Please fill all required fields");
+    setErrorValue("");
     setLoading(true);
-    if (
-      !input.companyName ||
-      !input.title ||
-      !input.email ||
-      !input.location ||
-      !input.jobType ||
-      !input.instructions ||
-      !input.websiteUrl
-    ) {
-      setError(true);
-      setErrorValue("Please fill all required fields");
+    console.log("Submitting data:", input);
+
+    if (!input.companyName) {
+      setErrorValue("Please enter the company name");
       setLoading(false);
-    } else {
-      let formData = new FormData();
-      formData.append("companyName", input.companyName);
-      formData.append("title", input.title);
-      formData.append("email", input.email);
-      formData.append("location", input.location);
-      formData.append("type", input.jobType);
-      formData.append("company", input.image);
-      formData.append("instructions", input.instructions);
-      formData.append("websiteUrl", input.websiteUrl);
-      axios
-        .post(url, formData, {
-          headers: {
-            "content-type": "multipart/form-data",
-          },
-        })
-        .then((res) => {
-          if (res.data.success === 1) {
-            setError(true);
-            setErrorValue(res.data.msg);
-            setInput({
-              companyName: "",
-              title: "",
-              email: "",
-              location: "",
-              jobType: "",
-              image: null,
-              instructions: "",
-            });
-            setLoading(false);
-            setImageUrl(upload);
-          } else {
-            setError(true);
-            setErrorValue(res.data.msg);
-            setLoading(false);
-          }
-        });
+      console.log("Validation failed for companyName");
+      return;
     }
+
+    if (!input.title) {
+      setErrorValue("title");
+      setLoading(false);
+      return;
+    }
+
+    if (!input.location) {
+      setErrorValue("location");
+      setLoading(false);
+      return;
+    }
+
+    if (!input.jobType) {
+      setErrorValue("jobType");
+      setLoading(false);
+      return;
+    }
+
+    if (!input.instructions) {
+      setErrorValue("instructions");
+      setLoading(false);
+      return;
+    }
+
+    if (!input.email || !isValidEmail(input.email)) {
+      setErrorValue("email");
+      setLoading(false);
+      console.log("isValidEmail(input.email):", isValidEmail(input.email));
+      return;
+    }
+
+    if (!input.websiteUrl || !isValidURL(input.websiteUrl)) {
+      setErrorValue("websiteUrl");
+      setLoading(false);
+      console.log("isValidURL(input.websiteUrl):", isValidURL(input.websiteUrl));
+      return;
+    }
+    console.log("All validations passed. Sending POST request...");
+
+    let formData = new FormData();
+    formData.append("companyName", input.companyName);
+    formData.append("title", input.title);
+    formData.append("email", input.email);
+    formData.append("location", input.location);
+    formData.append("type", input.jobType);
+    formData.append("company", input.image);
+    formData.append("instructions", input.instructions);
+    formData.append("websiteUrl", input.websiteUrl);
+
+    axios
+      .post(url, formData, {
+        headers: {
+          "content-type": "multipart/form-data",
+        },
+      })
+      .then((res) => {
+        setLoading(false);
+        if (res.data.success === 1) {
+          setInput({
+            companyName: "",
+            title: "",
+            email: "",
+            location: "",
+            jobType: "",
+            image: null,
+            instructions: "",
+            websiteUrl: "",
+          });
+          setImageUrl(upload);
+          console.log("Submitted");
+
+          history.push("/");
+          console.log("returning");
+        } else {
+          setErrorValue("server");
+        }
+      })
+      .catch((error) => {
+        console.error("POST request failed:", error);
+        setLoading(false);
+        setErrorValue("server");
+      });
   };
+
   return (
     <div>
       <div className="mot-landing-page-blue">

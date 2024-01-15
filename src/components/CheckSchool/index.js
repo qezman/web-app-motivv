@@ -1,14 +1,33 @@
-import React from "react";
+import React, {useState} from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Fade from "react-reveal";
-import { Link } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import "./style.css";
+import axios from "axios"
+
+import Cookies from "js-cookie";  // Import Cookies
+import { useChallenge } from "../ChallengeContext";
+import { ValidateEmail } from "../../constants";
+
+import { URL } from "../../constants";
 
 import SchoolsCard from '../../assets/curriculum-cards.png'
 import SchoolsFeedback from '../../assets/mentorship.png'
 import SchoolsCertificate from '../../assets/schools-certificate.png';
 
+const axiosInstance = axios.create({
+  baseURL: 'your_backend_url',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
+
 export default function CheckSchool() {
+
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+  const [errorValue, setErrorValue] = useState(""); 
+
   return (
     <div className="mot-check-school">
       <Container>
