@@ -56,7 +56,7 @@ const Verification = () => {
           <p className="enter-verification">
             Please enter the verification code sent to your mobile phone
           </p>
-          <p className="phone">+234 81 2214 2257</p>
+          {/* <p className="phone">+234 81 2214 2257</p> */}
           <div className="numbers">
             {/* <span className="figure">5</span>
             <span className="figure">7</span>
