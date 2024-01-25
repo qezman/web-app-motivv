@@ -50,7 +50,6 @@ function App() {
           <Route exact path="/update/:id/:phone/:email" component={Update} />
           <Route exact path="/Edit" component={Edit} />
 
-          <Route exact path="/otp-edit" component={OtpEdit} />
           <Route exact path="/verification" component={Verification} />
 
           <Route

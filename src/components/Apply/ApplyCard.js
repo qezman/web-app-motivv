@@ -5,13 +5,24 @@ import { Typeahead } from "react-bootstrap-typeahead";
 import axios from "axios";
 import Fade from "react-reveal/Fade";
 import { URL } from "../../constants";
+
+import cloudinary from "cloudinary-core";
+
 let upload =
   "https://res.cloudinary.com/denw9euui/image/upload/v1594422865/upload_sncmdm.png";
 let edit =
   "https://res.cloudinary.com/denw9euui/image/upload/v1594654144/Motivv/Vector_tnnrwv.png";
 let close =
   "https://res.cloudinary.com/denw9euui/image/upload/v1594654144/Motivv/ion_close-circle_xsgnnq.png";
+
+const cloudinaryInstance = new cloudinary.Cloudinary({
+  cloud_name: "dr0tgora5",
+  api_key: "551275462432698",
+  api_secret: "jbqequNWMCfUhXN1m9dpCrpwPJg",
+});
+
 const url = `${URL}/`;
+
 export default function ApplyCard() {
   const [editActive, setEditActive] = useState(true);
   const [total, setTotal] = useState("");
@@ -113,65 +124,90 @@ export default function ApplyCard() {
       isValid = false;
     }
 
-
     setFormErrors(newFormErrors);
 
     return isValid;
   };
 
+  const openCloudinaryWidget = () => {
+    // Check if `cloudinary` object exists
+    if (window.cloudinary) {
+      // Open Cloudinary widget
+      window.cloudinary.openUploadWidget(
+        {
+          cloud_name: "dr0tgora5",
+          upload_preset: "motivv",
+          sources: ["local", "url", "camera", "image_search"],
+          folder: "avatar", // Optional: Specify the folder where the uploaded images will be stored
+        },
+        (error, result) => {
+          if (!error && result && result.event === "success") {
+            const imageUrl = result.info.secure_url;
+            setImageUrl(imageUrl);
+            setInput({ ...input, image: imageUrl });
+          }
+        }
+      );
+    } else {
+      console.error("Cloudinary widget is not available. Make sure Cloudinary script is loaded.");
+    }
+  };
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
       setLoading(true);
 
-    let linkk;
-    if (input.link.includes("http")) {
-      linkk = input.link;
-    } else {
-      linkk = `https://${input.link}`;
-    }
-    // setLoading(true);
-    if (
-      !input.name ||
-      !input.email ||
-      !input.phone ||
-      !input.phoneCode ||
-      !input.link ||
-      !input.image ||
-      title.length === 0
-    ) {
-      setError(true);
-      setErrorValue("Please fill all required fields");
-      setLoading(false);
-    } else if (
-      skill1.length === 0 &&
-      skill2.length === 0 &&
-      skill3.length === 0 &&
-      skill4.length === 0
-    ) {
-      setError(true);
-      setErrorValue("Pick at least a skill");
-      setLoading(false);
-    } else {
-      let formData = new FormData();
-      formData.append("name", input.name);
-      formData.append("link", linkk);
-      formData.append("headline", title[0]);
-      formData.append("email", input.email);
-      formData.append("phone", input.phoneCode + input.phone);
-      formData.append("startprice", startTotal);
-      formData.append("endprice", total);
-      if (skill1.length > 0) formData.append("skill1", skill1[0]);
-      if (skill2.length > 0) formData.append("skill2", skill2[0]);
-      if (skill3.length > 0) formData.append("skill3", skill3[0]);
-      if (skill4.length > 0) formData.append("skill4", skill4[0]);
-      formData.append("picture", input.image);
-      try {
-        const res = await axios.post(url, formData, {
-          headers: {
-            "content-type": "multipart/form-data",
-          },
-        });
+      let linkk;
+      if (input.link.includes("http")) {
+        linkk = input.link;
+      } else {
+        linkk = `https://${input.link}`;
+      }
+      // setLoading(true);
+      if (
+        !input.name ||
+        !input.email ||
+        !input.phone ||
+        !input.phoneCode ||
+        !input.link ||
+        !input.image ||
+        title.length === 0
+      ) {
+        setError(true);
+        setErrorValue("Please fill all required fields");
+        setLoading(false);
+      } else if (
+        skill1.length === 0 &&
+        skill2.length === 0 &&
+        skill3.length === 0 &&
+        skill4.length === 0
+      ) {
+        setError(true);
+        setErrorValue("Pick at least a skill");
+        setLoading(false);
+      } else {
+        let formData = new FormData();
+        formData.append("name", input.name);
+        formData.append("link", linkk);
+        formData.append("headline", title[0]);
+        formData.append("email", input.email);
+        formData.append("phone", input.phoneCode + input.phone);
+        formData.append("startprice", startTotal);
+        formData.append("endprice", total);
+        if (skill1.length > 0) formData.append("skill1", skill1[0]);
+        if (skill2.length > 0) formData.append("skill2", skill2[0]);
+        if (skill3.length > 0) formData.append("skill3", skill3[0]);
+        if (skill4.length > 0) formData.append("skill4", skill4[0]);
+        formData.append("picture", input.image);
+        // formData.append("avatar", input.image);
+        try {
+          console.log("Form Data:", formData);
+          const res = await axios.post(url, formData, {
+            headers: {
+              "content-type": "multipart/form-data",
+            },
+          });
           if (res.data.success === 1) {
             setError(true);
             setErrorValue(res.data.msg);
@@ -206,11 +242,11 @@ export default function ApplyCard() {
           setErrorValue("An error occurred during form submission");
           setLoading(false);
         }
+      }
+    } else {
+      console.log("Form validation failed");
     }
-  } else {
-    console.log("Form validation failed");
-  }
-};
+  };
   useEffect(() => {
     setTimeout(() => {
       setError(false);
@@ -262,6 +298,34 @@ export default function ApplyCard() {
     return newIncreasedPrice;
   };
   useEffect(() => {
+    console.log("Name:", input.name);
+
+    // Add console.log for the email field
+    console.log("Email:", input.email);
+
+    // Add console.log for the phoneCode and phone fields
+    console.log("Phone Code:", input.phoneCode);
+    console.log("Phone:", input.phone);
+
+    // Add console.log for the link field
+    console.log("Portfolio Link:", input.link);
+
+    // Add console.log for the image field
+    console.log("Image:", input.image);
+
+    // Add console.log for the title field
+    console.log("Title:", title);
+
+    // Add console.log for the skill1, skill2, skill3, and skill4 fields
+    console.log("Skill 1:", skill1);
+    console.log("Skill 2:", skill2);
+    console.log("Skill 3:", skill3);
+    console.log("Skill 4:", skill4);
+
+    // Add console.log for the startPriceRange and endPriceRange fields
+    console.log("Start Price Range:", startPriceRange);
+    console.log("End Price Range:", endPriceRange);
+
     let price = 50000 + parseInt(endPriceRange) * 2500;
     let formattedEndPrice = formatAmount(price);
     let price2 = 5000 + parseInt(startPriceRange) * 450;
@@ -306,9 +370,7 @@ export default function ApplyCard() {
               <div>
                 <div
                   className={!editActive ? "cursor" : ""}
-                  onClick={() =>
-                    !editActive ? imageRef.current.click() : null
-                  }
+                  onClick={() => (!editActive ? openCloudinaryWidget() : null)}
                 >
                   <input
                     required
